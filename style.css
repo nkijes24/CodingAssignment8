@@ -1,0 +1,133 @@
+/*
+    Dungeon Loot Splitter stylesheet.
+   
+/* Border-box sizing makes spacing easier to control across the full layout. */
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Mobile-first base layout: all sections stack vertically by default. */
+body {
+    margin: 0;
+    background-color: #f4f0e8;
+    color: #1f1f1f;
+    line-height: 1.5;
+}
+
+/* Header styles the required top title row. */
+header {
+    padding: 1.5rem;
+    background-color: #2b1d13;
+    color: #ffffff;
+    text-align: center;
+}
+
+h1,
+h2 {
+    margin-top: 0;
+}
+
+/* Main starts as a single-column grid for screens smaller than 768px. */
+main {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+/* Panels separate each required assignment section visually. */
+.panel {
+    background-color: #ffffff;
+    border: 2px solid #6b4f2a;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+/* Labels are visible and connected to inputs for accessibility. */
+label {
+    display: block;
+    margin-top: 0.75rem;
+    font-weight: bold;
+}
+
+/* Inputs use large touch-friendly sizing for mobile and accessibility. */
+input {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 0.25rem;
+    padding: 0.6rem;
+    border: 2px solid #555555;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Buttons use strong contrast and large clickable areas. */
+button {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border: 0;
+    border-radius: 8px;
+    background-color: #3b5f2a;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Focus styling makes keyboard navigation visible. */
+button:hover,
+button:focus {
+    background-color: #263f1b;
+    outline: 3px solid #d8b64c;
+    outline-offset: 2px;
+}
+
+ul {
+    padding-left: 1.25rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Validation messages display inside the interface instead of alerts. */
+.message {
+    min-height: 1.5rem;
+    color: #7a1f1f;
+    font-weight: bold;
+}
+
+/* Results panel visually separates final split output from the button. */
+.results {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f7f7f7;
+    border-left: 6px solid #3b5f2a;
+}
+
+/* Reflection section is visually distinct because it is a required bottom row. */
+.reflection {
+    background-color: #fff9e8;
+}
+
+/*
+    Required breakpoint:
+    At 768px and larger, the layout visibly changes to two columns.
+    This creates the required horizontal rows:
+    Row 1: header spans two columns
+    Row 2: Party Setup | Add Loot
+    Row 3: Loot List | Split Loot
+    Row 4: Logic Explanation spans two columns
+*/
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .reflection {
+        grid-column: span 2;
+    }
+}
