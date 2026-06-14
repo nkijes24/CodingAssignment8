@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dungeon Loot Splitter is an event-driven JavaScript web application that stores loot, calculates totals, and splits loot evenly among party members.">
+    <meta name="author" content="Jesse Nkinsi">
+    <meta name="keywords" content="Dungeon Loot Splitter, JavaScript, arrays, objects, loops, DOM, event listeners">
+
+    <title>Dungeon Loot Splitter</title>
+
+    <!-- External stylesheet only. No inline CSS is used. -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top row: required application title. -->
+    <header>
+        <h1>Dungeon Loot Splitter</h1>
+    </header>
+
+    <main>
+        <!-- Second row left on desktop; second stacked section on mobile. -->
+        <section class="panel" aria-labelledby="party-setup-heading">
+            <h2 id="party-setup-heading">Party Setup</h2>
+
+            <label for="partySize">Number of Party Members:</label>
+            <input type="number" id="partySize" name="partySize" min="1" step="1" inputmode="numeric">
+        </section>
+
+        <!-- Second row right on desktop; third stacked section on mobile. -->
+        <section class="panel" aria-labelledby="add-loot-heading">
+            <h2 id="add-loot-heading">Add Loot</h2>
+
+            <label for="lootName">Loot Name:</label>
+            <input type="text" id="lootName" name="lootName">
+
+            <label for="lootValue">Loot Value:</label>
+            <input type="number" id="lootValue" name="lootValue" min="0" step="0.01" inputmode="decimal">
+
+            <button id="addLootButton" type="button">Add Loot</button>
+
+            <p id="addMessage" class="message" aria-live="polite"></p>
+        </section>
+
+        <!-- Third row left on desktop; fourth stacked section on mobile. -->
+        <section class="panel" aria-labelledby="loot-list-heading">
+            <h2 id="loot-list-heading">Loot List</h2>
+
+            <ul id="lootList">
+                <li>No loot entered yet.</li>
+            </ul>
+
+            <p><strong>Total Loot</strong>: $<span id="runningTotal">0.00</span></p>
+        </section>
+
+        <!-- Third row right on desktop; fifth stacked section on mobile. -->
+        <section class="panel" aria-labelledby="split-loot-heading">
+            <h2 id="split-loot-heading">Split Loot</h2>
+
+            <button id="splitLootButton" type="button">Split Loot</button>
+
+            <div id="splitResults" class="results" aria-live="polite">
+                <p><strong>Total Loot</strong>: $<span id="finalTotal">0.00</span></p>
+                <p><strong>Loot Per Party Member</strong>: $<span id="lootPerMember">0.00</span></p>
+            </div>
+
+            <p id="splitMessage" class="message" aria-live="polite"></p>
+        </section>
+
+        <!-- Bottom row spans both columns on desktop. -->
+        <section class="panel reflection" aria-labelledby="logic-explanation-heading">
+            <h2 id="logic-explanation-heading">Logic Explanation</h2>
+
+            <p>
+                The application stores loot in one array named lootItems. Each time the user clicks Add Loot,
+                the program validates the form data first, then saves the loot as an object with a name and value.
+                A traditional for loop in calculateTotalLoot() adds the values from every object in the array.
+                Another traditional for loop in renderLoot() rebuilds the visible loot list on the page.
+                Conditional logic appears in addLoot() and splitLoot() to check for empty names, empty values,
+                invalid numbers, negative values, missing party size, party size below 1, and the case where no loot
+                has been entered before splitting.
+            </p>
+        </section>
+    </main>
+
+    <!-- External JavaScript only. No inline JavaScript is used. -->
+    <script src="js/script.js"></script>
+</body>
+</html>
